@@ -7,7 +7,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 set(PAWN_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/third_party/pawn")
 
 set(PAWNCC_SOURCES
-    ${PAWN_ROOT}/compiler/sc1.c ${PAWN_ROOT}/compiler/sc2.c
+    src/native/compiler.c ${PAWN_ROOT}/compiler/sc2.c
     ${PAWN_ROOT}/compiler/sc3.c ${PAWN_ROOT}/compiler/sc4.c
     ${PAWN_ROOT}/compiler/sc5.c ${PAWN_ROOT}/compiler/sc6.c
     ${PAWN_ROOT}/compiler/sc7.c ${PAWN_ROOT}/compiler/scexpand.c

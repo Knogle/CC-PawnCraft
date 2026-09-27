@@ -4,6 +4,7 @@
 Usage: python3 scripts/check_pawncraft_jar.py [path/to/pawncraft-VERSION.jar]
 Requires Python 3.11+ (standard library only). No Minecraft or network access.
 The default artifact and expected version come from gradle.properties.
+License checks use tracked snapshots, so a recursive submodule checkout is not required.
 """
 
 import argparse
@@ -21,8 +22,11 @@ LUA = "data/computercraft/lua/rom"
 LICENSES = {
     "META-INF/licenses/pawncraft/LICENSE.txt": ROOT / "LICENSE",
     "META-INF/licenses/pawncraft/TEMPLATE_LICENSE.txt": ROOT / "TEMPLATE_LICENSE.txt",
-    "META-INF/licenses/ccpawn/pawn-LICENSE.txt": ROOT / "third_party/pawn/LICENSE",
-    "META-INF/licenses/ccpawn/pawn-NOTICE.txt": ROOT / "third_party/pawn/NOTICE",
+    "META-INF/licenses/ccpawn/pawn-LICENSE.txt": ROOT / "licenses/pawn-LICENSE.txt",
+    "META-INF/licenses/ccpawn/pawn-NOTICE.txt": ROOT / "licenses/pawn-NOTICE.txt",
+    "META-INF/licenses/ccpawn/ISC-strlcpy-strlcat.txt": ROOT / "licenses/ISC-strlcpy-strlcat.txt",
+    "META-INF/licenses/glibc/LGPL-2.1.txt": ROOT / "licenses/LGPL-2.1.txt",
+    "META-INF/licenses/glibc/glibc-NOTICE.txt": ROOT / "licenses/glibc-NOTICE.txt",
 }
 REQUIRED = {
     METADATA,

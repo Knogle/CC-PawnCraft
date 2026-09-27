@@ -1,6 +1,6 @@
-# PawnCraft — Complete User and API Guide
+# PawnCraft: Complete User and API Guide
 
-Version: **0.4.0** · Compiler: **CompuPhase PAWN 4.1.7222**
+Version: **0.4.1** · Compiler: **CompuPhase PAWN 4.1.7222**
 Reference target: Minecraft **1.21.1**, NeoForge **21.1.248**, CC:Tweaked **1.120.2**.
 
 This standalone reference is intended for writing, reviewing, and generating PAWN
@@ -69,11 +69,11 @@ does not provide an in-game Java compiler or JVM worker.
 
 ### 2.1 Operator installation
 
-- Install `pawncraft-0.4.0.jar` alongside compatible CC:Tweaked in the server's
+- Install `pawncraft-0.4.1.jar` alongside compatible CC:Tweaked in the server's
   `mods` directory. Keep only one version of the addon there.
 - Stop Minecraft cleanly and back up the instance before replacing a JAR.
   Restart the Minecraft instance after replacing it.
-- The 0.4.0 artifact described here bundles **Linux x86_64** native programs,
+- The 0.4.1 artifact described here bundles **Linux x86_64** native programs,
   requiring **glibc 2.38 or newer**. The JVM must be able to extract and execute
   them in its temporary directory; a `noexec` mount can prevent this.
 - The target Minecraft/NeoForge environment uses **Java 21**.
@@ -1627,7 +1627,7 @@ the actual installed version before generating more elaborate chat code.
 
 ### 16.1 Resource limits
 
-| Resource | Limit / rule in 0.4.0 |
+| Resource | Limit / rule in 0.4.1 |
 | --- | --- |
 | Source text | 256 KiB; valid UTF-8 |
 | Compiled AMX / VM allocation | At most 1 MiB, subject to the program's own stack/heap allocation |
@@ -1743,13 +1743,17 @@ Version notes:
   described here.
 - **0.4.0:** renamed the project to PawnCraft and removed the separate in-game
   Java runtime. Java 21 remains the Minecraft/addon runtime requirement.
+- **0.4.1:** completed third-party license packaging and added regression checks
+  for JARs and source archives. Compiler copyright banners now also credit glibc.
+  The original PawnCraft code remains MIT licensed; PAWN APIs and program behavior
+  are unchanged.
 
 When upgrading, remove the previous `ccpawn-*.jar` from `mods/` before installing
-`pawncraft-0.4.0.jar`; do not install both. The internal mod ID `ccpawn`, PAWN
+`pawncraft-0.4.1.jar`; do not install both. The internal mod ID `ccpawn`, PAWN
 commands, include names, native API names, and resource paths remain unchanged.
 Stop the server and back up the instance before replacing the JAR, then restart.
 
-Recompile source with the installed 0.4.0 toolchain for reproducible behavior.
+Recompile source with the installed 0.4.1 toolchain for reproducible behavior.
 Older bytecode using the addon's original natives is intended to remain
 compatible, but bytecode from another host/library declaration is not guaranteed.
 In particular, `valstr` uses this addon's extra capacity parameter.
@@ -1776,11 +1780,11 @@ use CC helpers. For text formatting, use `strformat`. For floating point, use
 ## 18. Code-generation checklist
 
 When giving this file to a coding assistant, specify the physical setup and
-desired behavior, then require code targeting **PawnCraft 0.4.0 / PAWN 4.1.7222**.
+desired behavior, then require code targeting **PawnCraft 0.4.1 / PAWN 4.1.7222**.
 
 A useful prompt:
 
-> Generate one complete PAWN program for PawnCraft 0.4.0, using this guide as the
+> Generate one complete PAWN program for PawnCraft 0.4.1, using this guide as the
 > API contract. Use only the bundled functions and verified CC/peripheral
 > methods. State hardware assumptions, name the source file, and give the
 > CraftOS edit/compile/run commands. Check errors and buffer sizes. Do not
@@ -1832,7 +1836,7 @@ git submodule update --init --recursive
 ./gradlew build --console=plain
 ```
 
-Artifact: `build/libs/pawncraft-0.4.0.jar`. PAWN-focused tests:
+Artifact: `build/libs/pawncraft-0.4.1.jar`. PAWN-focused tests:
 
 ```sh
 ./gradlew headlessTest pawnStdlibTest pawnTransportTest ccPawnIntegrationTest --console=plain
@@ -1840,16 +1844,25 @@ luajit scripts/lua_bridge_test.lua
 luajit scripts/pawn_runtime_test.lua
 python3 scripts/check_pawn_guide.py
 python3 scripts/check_pawncraft_jar.py
+python3 scripts/check_license_sources.py
+python3 scripts/compiler_notice_test.py
 ```
+
+To check the committed public source archive, run
+`python3 scripts/check_license_sources.py --git-ref HEAD`.
 
 The guide checker compiles every `pawn` block using the actual bundled
 compiler/includes and checks that public helper names are documented.
 Console-only examples are additionally executed with the native AMX runner
 and a mock terminal transport. Hardware examples are **not** executed against
-a live world. The JAR checker verifies addon metadata and required PAWN
-resources, and rejects accidentally packaged remnants of the removed in-game
-Java runtime. Both documentation and packaging checks are part of Gradle
-`check`, alongside the runtime regression tests.
+a live world. The JAR checker verifies addon metadata, required PAWN resources,
+and byte-exact license notices, and rejects accidentally packaged remnants of
+the removed in-game Java runtime. The source checker validates tracked notices
+against the pinned upstream sources; its archive mode also verifies that source
+downloads retain the notices without a populated submodule. Documentation and
+packaging checks are part of Gradle `check`, alongside the runtime regression
+tests. These checks protect known packaging requirements, not the legal status
+or authorship of arbitrary future dependencies. See the [license inventory](../licenses/README.md).
 
 Dedicated JSON module tests use the real CC `textutils` source with a small
 local Lua environment shim; substitute your local CC source directory:
@@ -1873,6 +1886,12 @@ Headless peripherals are simulated test devices. These tests do **not** load
 every modpack, prove every third-party peripheral API, or constitute a security
 audit. Compilation of guide examples proves syntax/native declarations, not
 every possible in-game outcome.
+
+Known upstream compiler limitation: `-d2` can emit uninitialized array-index
+tag fields in the appended debug-symbol data (`compiler/sc6.c`, `dbgidxtag`).
+Repeated builds may therefore have different AMX hashes even with identical
+executable code and data. PawnCraft does not use these debug fields. This
+pre-existing issue is separate from the 0.4.1 license corrections.
 
 ### 19.3 Authoritative local implementation
 

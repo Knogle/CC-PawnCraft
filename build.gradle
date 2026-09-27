@@ -153,8 +153,14 @@ tasks.named('processResources', ProcessResources).configure {
     }
     from('LICENSE') { rename { 'LICENSE.txt' }; into 'META-INF/licenses/pawncraft' }
     from('TEMPLATE_LICENSE.txt') { into 'META-INF/licenses/pawncraft' }
-    from('third_party/pawn/LICENSE') { rename { 'pawn-LICENSE.txt' }; into 'META-INF/licenses/ccpawn' }
-    from('third_party/pawn/NOTICE') { rename { 'pawn-NOTICE.txt' }; into 'META-INF/licenses/ccpawn' }
+    from('licenses') {
+        include 'pawn-LICENSE.txt', 'pawn-NOTICE.txt', 'ISC-strlcpy-strlcat.txt'
+        into 'META-INF/licenses/ccpawn'
+    }
+    from('licenses') {
+        include 'LGPL-2.1.txt', 'glibc-NOTICE.txt'
+        into 'META-INF/licenses/glibc'
+    }
 }
 
 tasks.register('headlessTest', Exec) {

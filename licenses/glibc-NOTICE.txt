@@ -1,0 +1,26 @@
+GNU C Library runtime dependency
+
+PawnCraft's Linux executables, ccpawn-pawncc and ccpawn-runner, dynamically
+link to the system GNU C Library (glibc), including libc.so.6 and libm.so.6.
+The GNU C Library and its use are covered by the GNU Lesser General Public
+License, version 2.1 or later. Copyright (C) the Free Software Foundation,
+Inc. and other contributors; the installed system library retains its
+own copyright and licensing notices.
+
+PawnCraft does not bundle or modify those shared libraries. They are
+provided by the host operating system and may be replaced with modified,
+interface-compatible versions. PawnCraft does not restrict modification
+for your own use or reverse engineering for debugging such modifications.
+The dynamic dependency does not change the MIT license of PawnCraft's
+original code.
+
+The complete LGPL version 2.1 accompanies this notice as LGPL-2.1.txt.
+In the source repository, it is licenses/LGPL-2.1.txt. In the PawnCraft
+JAR, it is included in the same license directory as this notice.
+
+GNU C Library project and source:
+https://sourceware.org/glibc/
+https://sourceware.org/git/glibc.git
+
+Official LGPL version 2.1 text:
+https://sourceware.org/glibc/manual/latest/html_node/Copying.html

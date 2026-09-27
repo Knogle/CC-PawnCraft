@@ -3,3 +3,8 @@
 # are changed when only line endings change.
 src/generated/**/.cache/* text eol=lf
 src/generated/**/*.json text eol=lf
+
+# Preserve third-party license snapshots verbatim, including upstream CRLF.
+/licenses/pawn-LICENSE.txt -text whitespace=cr-at-eol,-blank-at-eof
+/licenses/pawn-NOTICE.txt -text whitespace=cr-at-eol,-blank-at-eof
+/licenses/LGPL-2.1.txt -text whitespace=cr-at-eol,-blank-at-eof

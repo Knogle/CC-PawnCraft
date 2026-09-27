@@ -1,4 +1,4 @@
-# PawnCraft 0.4.0 – PAWN-Bibliotheken für ComputerCraft
+# PawnCraft 0.4.1 – PAWN-Bibliotheken für ComputerCraft
 
 `#include <computercraft>` lädt alle hier beschriebenen Helfer. Zusätzlich
 akzeptiert der Ingame-Compiler die gebündelten Includes `ccstdlib`, `float`,

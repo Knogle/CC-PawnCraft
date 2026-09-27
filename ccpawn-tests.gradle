@@ -32,4 +32,24 @@ tasks.register('pawncraftJarCheckerTest', Exec) {
 
 tasks.named('check') { dependsOn 'pawnGuideTest', 'pawncraftJarTest', 'pawncraftJarCheckerTest' }
 
+tasks.register('sourceLicenseTest', Exec) {
+    commandLine 'python3', 'scripts/check_license_sources.py'
+}
+
+tasks.register('sourceLicenseCheckerTest', Exec) {
+    commandLine 'python3', 'scripts/check_license_sources_test.py'
+}
+
+tasks.named('check') {
+    dependsOn 'sourceLicenseTest', 'sourceLicenseCheckerTest'
+}
+
+tasks.register('compilerNoticeTest', Exec) {
+    dependsOn 'buildNative'
+    commandLine 'python3', 'scripts/compiler_notice_test.py',
+        layout.buildDirectory.file('native/bin/ccpawn-pawncc').get().asFile
+}
+
+tasks.named('check') { dependsOn 'compilerNoticeTest' }
+
 apply from: 'ccpawn-integration.gradle'

@@ -1,7 +1,8 @@
 /* Float arithmetic and operators adapted from third_party/pawn/include/float.inc.
  * (c) Copyright 1999, Artran, Inc.; Greg Garner (gmg@artran.com).
  * PAWN toolkit: Copyright (c) 1997-2023 CompuPhase, Apache-2.0;
- * see third_party/pawn/LICENSE and third_party/pawn/NOTICE.
+ * see licenses/pawn-LICENSE.txt and licenses/pawn-NOTICE.txt in the source
+ * distribution, or META-INF/licenses/ccpawn/ inside the addon JAR.
  * Local changes: include guard, no dynamic-library pragma, compact operator
  * declarations, explicit floatint declaration. Natives run inside our runner.
  */

@@ -16,7 +16,7 @@ The Minecraft host needs **Java 21**. The bundled native tools require
 **Linux x86_64 with glibc 2.38 or newer**; Windows, macOS, and ARM binaries are
 not included.
 
-1. [Build the addon](#building) to obtain `pawncraft-0.4.0.jar`.
+1. [Build the addon](#building) to obtain `pawncraft-0.4.1.jar`.
 2. Stop your Minecraft instance and back it up.
 3. Place the JAR in its `mods/` directory alongside CC:Tweaked.
 4. Start Minecraft. Open a CC computer and run `help pawn` to check installation.
@@ -74,7 +74,7 @@ cd CC-PawnCraft
 ./gradlew build
 ```
 
-The output is `build/libs/pawncraft-0.4.0.jar`. The build runs local compiler,
+The output is `build/libs/pawncraft-0.4.1.jar`. The build runs local compiler,
 VM, CraftOS integration, documentation, and packaging checks. It does not
 start or contact a Minecraft server.
 
@@ -99,6 +99,8 @@ before submitting code changes.
 
 PawnCraft's original code is [MIT licensed](LICENSE). The bundled CompuPhase
 PAWN toolkit and the adapted `float.inc` retain their upstream
-[license](third_party/pawn/LICENSE) and [notices](third_party/pawn/NOTICE).
-All license texts and notices are included in the built JAR.
+[license](licenses/pawn-LICENSE.txt) and [notices](licenses/pawn-NOTICE.txt).
+The [license inventory](licenses/README.md) also covers the compiler's ISC code
+and its system glibc dependency. These license texts and notices are included
+in the built JAR and source archives.
 NeoForge MDK attribution is retained in [TEMPLATE_LICENSE.txt](TEMPLATE_LICENSE.txt).
