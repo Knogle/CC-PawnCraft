@@ -1,13 +1,52 @@
+<div align="center">
+
 # PawnCraft
 
-Write PAWN programs for [CC:Tweaked](https://tweaked.cc/).
+**Write PAWN programs for [CC:Tweaked](https://tweaked.cc/).**
 
-PawnCraft adds a PAWN compiler and runtime to your existing ComputerCraft
-computers and turtles. Compile in-game, control redstone, call peripherals,
-handle events, and work with files and JSON. Your computers keep their normal
-CraftOS terminal and Lua programs.
+Compile in-game. Wire up redstone. Put your turtles to work.
 
-[User guide and API](docs/PAWN-GUIDE.md) · [Examples](examples) · [Building](#building)
+[![Build](https://github.com/Knogle/CC-PawnCraft/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/Knogle/CC-PawnCraft/actions/workflows/build.yml)
+[![Minecraft 1.21.1](https://img.shields.io/badge/Minecraft-1.21.1-62b47a)](#installation)
+[![NeoForge](https://img.shields.io/badge/loader-NeoForge-f59e42)](#installation)
+[![CC:Tweaked 1.120.2](https://img.shields.io/badge/CC%3ATweaked-1.120.2-488bc7)](#installation)
+[![Host: Linux x86_64](https://img.shields.io/badge/host-Linux%20x86__64-6f42c1)](#installation)
+[![Original code: MIT](https://img.shields.io/badge/original%20code-MIT-62b47a)](#license)
+
+[Install](#installation) · [Quickstart](#getting-started) · [Screenshots](#in-game) · [User guide and API](docs/PAWN-GUIDE.md) · [Examples](examples) · [Build from source](#building)
+
+</div>
+
+PawnCraft adds a native PAWN compiler and AMX runtime to your ComputerCraft
+computers and turtles. Your normal CraftOS terminal and Lua programs stay intact.
+
+## Highlights
+
+- **Redstone and turtles:** read inputs, switch outputs, and automate your builds.
+- **Peripherals:** work with monitors, inventories, and other connected devices.
+- **Events and data:** use timers, modem messages, files, and JSON.
+- **PAWN tooling:** compile in-game, with string helpers, formatting, and float math.
+
+## In game
+
+<table>
+  <tr>
+    <th>Editing PAWN in CraftOS</th>
+    <th>Compiling to AMX</th>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="assets/readme/pawn-editor.png"><img src="assets/readme/pawn-editor.png" alt="CraftOS editor showing a PAWN redstone script" width="500"></a>
+    </td>
+    <td width="50%" valign="top">
+      <a href="assets/readme/pawn-compiler.png"><img src="assets/readme/pawn-compiler.png" alt="CraftOS terminal showing pawncc successfully compiling test.pwn to test.amx" width="500"></a>
+    </td>
+  </tr>
+</table>
+
+Click either image for full size. These early development screenshots predate
+the current compiler's additional license notices; use the [examples](examples)
+for tested programs.
 
 ## Installation
 
