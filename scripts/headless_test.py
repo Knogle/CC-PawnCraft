@@ -67,6 +67,10 @@ def main():
         [sys.executable, root / "scripts/redstone_test.py", compiler, runner],
         check=True, timeout=40,
     )
+    subprocess.run(
+        [sys.executable, root / "scripts/annihilator_test.py", compiler, runner],
+        check=True, timeout=40,
+    )
 
 
 if __name__ == "__main__":

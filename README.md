@@ -13,7 +13,7 @@ Compile in-game. Wire up redstone. Put your turtles to work.
 [![Host: Linux x86_64](https://img.shields.io/badge/host-Linux%20x86__64-6f42c1)](#installation)
 [![Original code: MIT](https://img.shields.io/badge/original%20code-MIT-62b47a)](#license)
 
-[Install](#installation) · [Quickstart](#getting-started) · [Screenshots](#in-game) · [User guide and API](docs/PAWN-GUIDE.md) · [Examples](examples) · [Build from source](#building)
+[Install](#installation) · [Quickstart](#getting-started) · [Showcase](#in-game) · [User guide and API](docs/PAWN-GUIDE.md) · [Examples](examples) · [Build from source](#building)
 
 </div>
 
@@ -28,6 +28,17 @@ computers and turtles. Your normal CraftOS terminal and Lua programs stay intact
 - **PAWN tooling:** compile in-game, with string helpers, formatting, and float math.
 
 ## In game
+
+### The Annihilator
+
+<p align="center">
+  <a href="docs/showcases/annihilator.md"><img src="assets/readme/annihilator.gif" alt="The Annihilator bamboo harvester in action, powered by CC: PawnCraft" width="640"></a>
+</p>
+
+A real bamboo harvester controlled by a PAWN redstone state machine.
+[PAWN source](examples/annihilator2.pwn) · [How it works](docs/showcases/annihilator.md) · [MP4](assets/readme/annihilator.mp4) · [Still image](assets/readme/annihilator-poster.jpg)
+
+### Writing and compiling
 
 <table>
   <tr>
