@@ -1,5 +1,13 @@
 # README media
 
+## Project icon
+
+`pawncraft-icon.png` is the maintainer-approved PawnCraft icon, generated with
+the built-in image generation tool and mechanically resized to 400 x 400 pixels.
+It depicts an ivory voxel chess pawn on a grass block with a green terminal,
+against an opaque charcoal background. The README displays it at 160 x 160.
+The original master and generation prompt are retained locally.
+
 ## Terminal screenshots
 
 In-game screenshots supplied by the project maintainer, captured on
