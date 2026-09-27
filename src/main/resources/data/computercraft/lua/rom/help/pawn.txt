@@ -1,0 +1,21 @@
+PawnCraft - PAWN programs on CC:Tweaked
+
+  pawncc source.pwn [-o program.amx]
+  pawn program.amx
+
+Include <computercraft> for cc_call(), result accessors and the convenience
+wrappers. The generic bridge supports term, redstone, fs, peripheral, turtle,
+pocket, os, disk, gps, settings, rednet, commands, paintutils and help. Argument formats are i (integer), b
+(boolean), f (float), s (string) and j (JSON). Table results are returned as
+JSON strings.
+
+Since 0.3.0, <computercraft> also includes printf/strformat, strings,
+Float math, JSON, peripheral helpers, events and timers.
+
+cc_sleep(ms) and delay(ms) wait without blocking the server.
+cc_start_timer(ms) starts a one-shot timer; settimer(ms) repeats.
+cc_wait_timer(id) waits; cc_cancel_timer(id) stops it.
+Timers produce CC events, not PAWN @timer callbacks.
+gettime/getdate use UTC; tickcount uses CC computer uptime.
+
+Examples and the full English API reference are in docs/PAWN-GUIDE.md.

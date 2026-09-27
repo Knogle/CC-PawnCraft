@@ -1,0 +1,22 @@
+// Actual CraftOS/Cobalt execution, without a Minecraft process or network listener.
+sourceSets {
+    ccIntegration {
+        java.srcDir 'src/ccIntegration/java'
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+    }
+}
+
+dependencies {
+    ccIntegrationImplementation "cc.tweaked:cc-tweaked-1.21.1-core:${cc_tweaked_version}"
+    ccIntegrationRuntimeOnly 'org.slf4j:slf4j-simple:2.0.9'
+}
+
+tasks.register('ccPawnIntegrationTest', JavaExec) {
+    dependsOn 'classes', 'ccIntegrationClasses'
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+    classpath = sourceSets.ccIntegration.runtimeClasspath
+    mainClass = 'industries.knogle.ccintegration.PawnCraftOsTest'
+}
+
+tasks.named('check') { dependsOn 'ccPawnIntegrationTest' }

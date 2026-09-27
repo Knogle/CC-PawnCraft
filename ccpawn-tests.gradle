@@ -1,0 +1,35 @@
+// Local PAWN libraries/protocol regressions, complementing real CraftOS tests.
+tasks.register('pawnStdlibTest', Exec) {
+    dependsOn 'buildNative'
+    commandLine 'python3', 'scripts/stdlib_test.py',
+        layout.buildDirectory.file('native/bin/ccpawn-pawncc').get().asFile,
+        layout.buildDirectory.file('native/bin/ccpawn-runner').get().asFile
+}
+tasks.register('pawnTransportTest', Exec) {
+    dependsOn 'buildNative'
+    commandLine 'python3', 'scripts/pawn_transport_test.py',
+        layout.buildDirectory.file('native/bin/ccpawn-pawncc').get().asFile,
+        layout.buildDirectory.file('native/bin/ccpawn-runner').get().asFile
+}
+tasks.named('check') { dependsOn 'pawnStdlibTest', 'pawnTransportTest' }
+
+tasks.register('pawnGuideTest', Exec) {
+    dependsOn 'buildNative'
+    commandLine 'python3', 'scripts/check_pawn_guide.py'
+}
+
+tasks.register('pawncraftJarTest', Exec) {
+    dependsOn 'jar'
+    def addonJar = tasks.named('jar', Jar).flatMap { it.archiveFile }
+    inputs.file(addonJar)
+    inputs.file('scripts/check_pawncraft_jar.py')
+    commandLine 'python3', 'scripts/check_pawncraft_jar.py', addonJar.get().asFile
+}
+
+tasks.register('pawncraftJarCheckerTest', Exec) {
+    commandLine 'python3', 'scripts/check_pawncraft_jar_test.py'
+}
+
+tasks.named('check') { dependsOn 'pawnGuideTest', 'pawncraftJarTest', 'pawncraftJarCheckerTest' }
+
+apply from: 'ccpawn-integration.gradle'

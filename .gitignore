@@ -38,3 +38,11 @@ run/
 **/src/generated/**/.cache/
 repo/
 !**/src/**/repo/
+
+### Python test tools ###
+__pycache__/
+*.pyc
+
+### Private deployment notes ###
+/docs/DEPLOYMENT-*.md
+/.private/

@@ -1,25 +1,46 @@
 name: Build
 
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
+
+permissions:
+  contents: read
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    # Keep the native Linux x86_64 artifact on a stable glibc baseline.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout repository and pinned PAWN sources
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          fetch-depth: 0
-          fetch-tags: true
+          submodules: recursive
+          persist-credentials: false
 
-      - name: Setup JDK 21
-        uses: actions/setup-java@v4
+      - name: Install native build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes --no-install-recommends build-essential cmake python3
+          python3 -c 'import sys; assert sys.version_info >= (3, 11), "Python 3.11+ required"'
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1
         with:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@9c971963bec38e04b3d30dcc455b5382be2fdbfb # v6.3.0
+        with:
+          cache-provider: basic
 
-      - name: Build with Gradle
-        run: ./gradlew build
+      - name: Build and run local tests
+        run: ./gradlew --no-daemon build
+
+      - name: Upload PawnCraft JAR
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: pawncraft-linux-x86_64
+          path: build/libs/pawncraft-*.jar
+          if-no-files-found: error
+          retention-days: 14
