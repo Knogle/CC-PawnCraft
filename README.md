@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/readme/pawncraft-icon.png" alt="PawnCraft logo: a voxel chess pawn on a grass block with a green terminal" width="160" height="160">
+<img src="assets/readme/pawncraft-icon.png" alt="PawnCraft logo: a voxel chess pawn on a grass block with a green terminal" width="160">
 
 # PawnCraft
 

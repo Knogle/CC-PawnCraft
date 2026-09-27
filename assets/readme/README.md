@@ -2,11 +2,11 @@
 
 ## Project icon
 
-`pawncraft-icon.png` is the maintainer-approved PawnCraft icon, generated with
-the built-in image generation tool and mechanically resized to 400 x 400 pixels.
-It depicts an ivory voxel chess pawn on a grass block with a green terminal,
-against an opaque charcoal background. The README displays it at 160 x 160.
-The original master and generation prompt are retained locally.
+`pawncraft-icon.png` is the transparent PawnCraft icon supplied by the maintainer
+on 2026-09-27 as `ChatGPT-Bild 27. Sept. 2026, 21_38_19.png`.
+It depicts an ivory voxel chess pawn on a grass block with a green terminal.
+The supplied 1278 x 1230 PNG is included unchanged, preserving its alpha channel.
+The README displays it at 160 pixels wide with its original aspect ratio.
 
 ## Terminal screenshots
 
